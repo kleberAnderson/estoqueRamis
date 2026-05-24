@@ -11,8 +11,11 @@ Este é um sistema desenvolvido para simplificar e automatizar o gerenciamento d
 
 ## 🛠️ Tecnologias Utilizadas
 
-Java 21 & Spring Boot 3.5.14Maven: Gerenciador de dependências e build do projeto.Spring Web: Criação da aplicação web estruturada no padrão MVC.Thymeleaf: Motor de templates para renderização do HTML dinâmico no servidor.Spring Data JPA: Abstração e facilitação das operações de banco de dados com Hibernate.MySQL Driver: Conector oficial para comunicação com o banco de dados MySQL.Spring Boot DevTools: Reinicialização automática da aplicação para agilizar o desenvolvimento.Lombok: Redução de código repetitivo (boilerplates) através de anotações como @Data.
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Java 21 & Spring Boot 3.5.14
+Spring Boot DevTools: Reinicialização automática da aplicação para agilizar o desenvolvimento.
+Maven: Gerenciador de dependências e build do projeto.
+Spring Web: Criação da aplicação web estruturada no padrão MVC.
+Thymeleaf: Motor de templates para renderização do HTML dinâmico no servidor.
+Spring Data JPA: Abstração e facilitação das operações de banco de dados com Hibernate.
+MySQL Driver: Conector oficial para comunicação com o banco de dados MySQL.
+Lombok: Redução de código repetitivo (boilerplates) através de anotações como @Data.
