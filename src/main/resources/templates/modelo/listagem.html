@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Listagem de Modelos</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: sans-serif;
+            background: #f4f6f8;
+            color: #333;
+            padding: 32px;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            color: #222;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+
+        thead {
+            background: #4f46e5;
+            color: #fff;
+        }
+
+        th {
+            padding: 14px 16px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+        }
+
+        td {
+            padding: 13px 16px;
+            font-size: 14px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: #f9f9ff;
+        }
+
+        .badge-estoque {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .badge-ok   { background: #dcfce7; color: #166534; }
+        .badge-low  { background: #fef9c3; color: #854d0e; }
+        .badge-zero { background: #fee2e2; color: #991b1b; }
+
+        .empty {
+            text-align: center;
+            padding: 48px;
+            color: #888;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Modelos cadastrados</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Data de cadastro</th>
+                <th>Estoque</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- lista vazia -->
+            <tr th:if="${#lists.isEmpty(lista)}">
+                <td colspan="5" class="empty">Nenhum modelo cadastrado ainda.</td>
+            </tr>
+
+            <!-- linhas da tabela -->
+            <tr th:each="m : ${lista}">
+                <td th:text="${m.id}"></td>
+                <td th:text="${m.nome}"></td>
+                <td th:text="${'R$ ' + #numbers.formatDecimal(m.preco, 1, 'POINT', 2, 'COMMA')}"></td>
+                <td th:text="${#temporals.format(m.dataCadastro, 'dd/MM/yyyy')}"></td>
+                <td>
+                    <span th:if="${m.estoque > 10}"
+                          class="badge-estoque badge-ok"
+                          th:text="${m.estoque + ' un.'}"></span>
+                    <span th:if="${m.estoque > 0 and m.estoque <= 10}"
+                          class="badge-estoque badge-low"
+                          th:text="${m.estoque + ' un.'}"></span>
+                    <span th:if="${m.estoque == 0}"
+                          class="badge-estoque badge-zero">Sem estoque</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
